@@ -1,0 +1,74 @@
+<div class="grid">
+    <!-- image -->
+    <div class="xl:col-6 lg:col-6 md:col-4 col-12 flex justify-content-center">
+        <app-image [image]="'form.png'" class="flex align-items-center"></app-image>
+    </div>
+    <!-- form user -->
+    <div class="xl:col-6 lg:col-6 md:col-8 col-12 flex justify-content-center flex-wrap">
+        <div class=" flex align-items-center w-full xl:px-8 lg:px-8 px-0">
+            <form   action=""
+                    autocomplete="off" 
+                    class="w-full xl:px-5 lg:px-5 px-0">
+                <div class="title mb-4">
+                    <h1>Get's started.</h1>
+                    <small class="sub-title">Enter your credentials to create your account</small>
+                </div>
+                <div class="field">
+                    <label for="name" class="block">Name</label>
+                    <input  id="name" 
+                            type="text" 
+                            aria-describedby="name"
+                            placeholder="enter your name" 
+                            pInputText
+                            class="w-full"/>
+                    <!-- <small id="email" class="p-error block">Username is not available.</small> -->
+                </div>
+                <div class="field">
+                    <label for="email" class="block">Your e-mail</label>
+                    <input  id="email" 
+                            type="email" 
+                            aria-describedby="email"
+                            placeholder="name@domaim.com"  
+                            pInputText
+                            class="w-full"/>
+                    <!-- <small id="email" class="p-error block">Username is not available.</small> -->
+                </div>
+                <div class="field">
+                    <label for="telephone" class="block">Phone</label>
+                    <input  id="telephone" 
+                            type="tel" 
+                            aria-describedby="telephone"  
+                            pInputText
+                            placeholder="099........"
+                            class="w-full"/>
+                    <!-- <small id="email" class="p-error block">Username is not available.</small> -->
+                </div>
+                <div class="field">
+                    <label for="password" class="block">Password</label>
+                    <p-password [toggleMask]="true" 
+                                [feedback]="false"
+                                inputStyleClass="w-full"
+                                placeholder="at least 6 characters"
+                                styleClass="w-full">
+                    </p-password>
+                    <!-- <small id="password" class="p-error block">Username is not available.</small> -->
+                </div>
+                <div class="flex justify-content-center flex-wrap">
+                    <button pButton pRipple type="button" label="Register" class="w-full mt-1"></button>
+                    <div class="flex align-items-center mt-3">
+                        <small class="sub-title">
+                            Do you have account? 
+                        </small>
+                        <button pButton 
+                                pRipple 
+                                type="button" 
+                                label="Sing in" 
+                                class="p-button-text p-button-plain"
+                                routerLink="/login">
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
