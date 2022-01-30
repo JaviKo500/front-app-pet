@@ -1,3 +1,4 @@
+<p-toast></p-toast>
 <div class="grid">
     <!-- image -->
     <div class="xl:col-6 lg:col-6 md:col-4 col-12 flex justify-content-center">
@@ -8,21 +9,32 @@
         <div class=" flex align-items-center w-full xl:px-8 lg:px-8 px-0">
             <form   action=""
                     autocomplete="off" 
-                    class="w-full xl:px-5 lg:px-5 px-0">
+                    class="w-full xl:px-5 lg:px-5 px-0"
+                    [formGroup]="registerForm"
+                    (ngSubmit)="createUser()">
                 <div class="title mb-4">
                     <h1>Get's started.</h1>
                     <small class="sub-title">Enter your credentials to create your account</small>
                 </div>
+                <!-- input name -->
                 <div class="field">
-                    <label for="name" class="block">Name</label>
-                    <input  id="name" 
+                    <label for="names" class="block">Name</label>
+                    <input  id="names" 
                             type="text" 
-                            aria-describedby="name"
+                            aria-describedby="names"
                             placeholder="enter your name" 
                             pInputText
-                            class="w-full"/>
-                    <!-- <small id="email" class="p-error block">Username is not available.</small> -->
+                            class="w-full"
+                            formControlName="names"/>
+                    <!-- Message error -->
+                    <small  id="names" 
+                            class="p-error"
+                            error-msg
+                            [message] ="userMsgFormService.nameErrorMsg"
+                            [valid] ="!userMsgFormService.isValidField('names')">
+                    </small>
                 </div>
+                <!-- input email -->
                 <div class="field">
                     <label for="email" class="block">Your e-mail</label>
                     <input  id="email" 
@@ -30,9 +42,17 @@
                             aria-describedby="email"
                             placeholder="name@domaim.com"  
                             pInputText
-                            class="w-full"/>
-                    <!-- <small id="email" class="p-error block">Username is not available.</small> -->
+                            class="w-full"
+                            formControlName="email"/>
+                    <!-- Message error -->
+                    <small  id="email" 
+                            class="p-error"
+                            error-msg
+                            [valid]="!userMsgFormService.isValidField('email')"
+                            [message]="userMsgFormService.emailErrorMsg">
+                    </small>
                 </div>
+                <!-- input phone -->
                 <div class="field">
                     <label for="telephone" class="block">Phone</label>
                     <input  id="telephone" 
@@ -40,21 +60,44 @@
                             aria-describedby="telephone"  
                             pInputText
                             placeholder="099........"
-                            class="w-full"/>
-                    <!-- <small id="email" class="p-error block">Username is not available.</small> -->
+                            class="w-full"
+                            formControlName="telephone"/>
+                    <!-- Message error -->
+                    <small  id="telephone" 
+                            class="p-error"
+                            error-msg
+                            [valid]="!userMsgFormService.isValidField('telephone')"
+                            [message]="userMsgFormService.phoneErrorMsg">
+                    </small>
                 </div>
+                <!-- input password -->
                 <div class="field">
                     <label for="password" class="block">Password</label>
                     <p-password [toggleMask]="true" 
                                 [feedback]="false"
                                 inputStyleClass="w-full"
                                 placeholder="at least 6 characters"
-                                styleClass="w-full">
+                                styleClass="w-full"
+                                formControlName="password">
                     </p-password>
-                    <!-- <small id="password" class="p-error block">Username is not available.</small> -->
+                    <!-- Message error -->
+                    <small  id="password" 
+                            class="p-error"
+                            error-msg
+                            [valid]="!userMsgFormService.isValidField('password')"
+                            [message]="userMsgFormService.passErrorMsg"
+                            >
+                    </small>
                 </div>
+                <!-- Buttons -->
                 <div class="flex justify-content-center flex-wrap">
-                    <button pButton pRipple type="button" label="Register" class="w-full mt-1"></button>
+                    <button pButton 
+                            pRipple 
+                            type="submit" 
+                            label="Register" 
+                            class="w-full mt-1"
+                            [disabled]="registerForm.pending">
+                    </button>
                     <div class="flex align-items-center mt-3">
                         <small class="sub-title">
                             Do you have account? 
